@@ -1,15 +1,21 @@
 <div align="center">
+  <img src="icon.png" alt="ALE Logo" width="128px">
 
-# ALE - AzerothCore Lua Engine
+# 🔮 ALE (AzerothCore Lua Engine) — JainaCore Edition
 
-*Unleash the power of Lua scripting in your AzerothCore server*
+*Motor de Scripting Lua de alto rendimiento para el ecosistema JainaCore 3.3.5a*
 
-[![Discord](https://img.shields.io/badge/Discord-Join%20Us-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/invite/sqkPb623)
-[![Lua](https://img.shields.io/badge/Lua-5.2-2C2D72?style=for-the-badge&logo=lua&logoColor=white)](http://www.lua.org/manual/5.2/)
-[![AzerothCore](https://img.shields.io/badge/AzerothCore-Integrated-darkgreen?style=for-the-badge)](http://www.azerothcore.org/)
+> **Distro Oficial:** Versión adaptada y blindada para **JainaCore 3.3.5a**.  
+> Basada originalmente en el proyecto open-source [azerothcore/mod-eluna](https://github.com/azerothcore/mod-eluna).
+
+</div>
+
+### ⚔️ Parches y Mejoras Exclusivas para JainaCore:
+- **Blindaje contra Crashes de Formato (`ALETemplate.h`):** Corrección del fallo crítico de formateo nulo cuando un tipo de datos no tenía metatable registrada (`fmt::format` recibiendo puntero de cadena nulo).
+- **Hardening de `HttpManager` Asíncrono:** Soporte optimizado de peticiones HTTP no bloqueantes para la pasarela de audio WebRTC (:3050) y el Caché Semántico de Lady Jaina (:8080).
+- **Ampliación de `PlayerMethods.h` y `UnitMethods.h`:** Funciones nativas de soporte para detección y sincronización del sistema de Onboarding, BattlePass y Modos de Juego (Hardcore / Ironman).
 
 ---
-</div>
 
 > [!IMPORTANT]
 > **ALE** is an independent Lua scripting engine specifically designed for AzerothCore. This project has **diverged from the original Eluna project** and is no longer compatible with standard Eluna scripts. Scripts written for ALE will not work with the original Eluna engine and vice versa.
