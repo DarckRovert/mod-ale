@@ -75,7 +75,7 @@ namespace LuaPlayer
         }
         else
         {
-            ALE::Push(L, (void*)nullptr);
+            ALE::Push(L);
         }
         return 1;
     }

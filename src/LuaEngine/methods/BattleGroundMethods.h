@@ -46,7 +46,7 @@ namespace LuaBattleGround
      */
     int GetMap(lua_State* L, BattleGround* bg)
     {
-        ALE::Push(L, bg->GetBgMap());
+        ALE::Push(L, static_cast<Map*>(bg->GetBgMap()));
         return 1;
     }
 
