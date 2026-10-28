@@ -19,3 +19,8 @@ if (LUA_VERSION MATCHES "luajit")
 else()
   add_subdirectory(src/lualib/lua)
 endif()
+
+if (EXISTS "${CMAKE_SOURCE_DIR}/modules/mod-playerbots" AND NOT (";${DISABLED_AC_MODULES};" MATCHES ";mod-playerbots;"))
+  MESSAGE(STATUS "ALE: mod-playerbots detected, enabling MOD_PLAYERBOTS Lua bindings")
+  add_definitions(-DMOD_PLAYERBOTS)
+endif()
