@@ -43,6 +43,7 @@
 | | [`Player:CanCompleteRepeatableQuest(questid)`](https://www.azerothcore.org/eluna/Player/CanCompleteRepeatableQuest.html) | https://github.com/azerothcore/mod-eluna/pull/141 |
 | | [`Player:CanRewardQuest(questId)`](https://www.azerothcore.org/eluna/Player/CanRewardQuest.html) | https://github.com/azerothcore/mod-eluna/pull/141 |
 | | [`Player:SetGlyph(glyphId, slotIndex)`](https://www.azerothcore.org/eluna/Player/SetGlyph.html) | https://github.com/azerothcore/mod-eluna/pull/152 |
+| | [`Player:GetBotAI()`](https://github.com/mod-playerbots/mod-playerbots) | Enabled via `-DMOD_PLAYERBOTS` for JainaCore Eluna Playerbot bindings |
 | **[Group](https://www.azerothcore.org/eluna/Group/index.html)** | | |
 | | [`Group:GetGroupType()`](https://www.azerothcore.org/eluna/Group/GetGroupType.html) | https://github.com/azerothcore/mod-eluna/pull/82 |
 | | [`Group:SetMemberFlag()`](https://www.azerothcore.org/eluna/Group/SetMemberFlag.html) | https://github.com/azerothcore/mod-eluna/pull/102 |
