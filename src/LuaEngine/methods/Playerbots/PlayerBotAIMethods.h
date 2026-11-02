@@ -2075,6 +2075,30 @@ namespace LuaPlayerBotAI
         ALE::Push(L, PlayerbotAI::GetItemScoreMultiplier(static_cast<ItemQualities>(quality)));
         return 1;
     }
+
+    /**
+     * Sets a tactical movement lock for the bot for <durationMs> milliseconds.
+     * Prevents C++ combat AI from overriding external/Lua tactical movement.
+     *
+     * @param uint32 durationMs = 1500
+     */
+    int SetTacticalMovementLock(lua_State* L, PlayerbotAI* botAI)
+    {
+        uint32 durationMs = ALE::CHECKVAL<uint32>(L, 2, 1500);
+        botAI->SetTacticalMovementLock(durationMs);
+        return 0;
+    }
+
+    /**
+     * Returns true if the bot is currently under a tactical movement lock.
+     *
+     * @return bool locked
+     */
+    int HasTacticalMovementLock(lua_State* L, PlayerbotAI* botAI)
+    {
+        ALE::Push(L, botAI->HasTacticalMovementLock());
+        return 1;
+    }
 };
 #endif // MOD_PLAYERBOTS
 #endif // PLAYERBOTAIMETHODS_H

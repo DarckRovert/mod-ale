@@ -1023,6 +1023,8 @@ ALERegister<PlayerbotAI> PlayerbotAIMethods[] =
     { "IsHealingSpell", &LuaPlayerBotAI::IsHealingSpell },
     { "Class2SpellFamilyName", &LuaPlayerBotAI::Class2SpellFamilyName },
     { "GetItemScoreMultiplier", &LuaPlayerBotAI::GetItemScoreMultiplier },
+    { "SetTacticalMovementLock", &LuaPlayerBotAI::SetTacticalMovementLock },
+    { "HasTacticalMovementLock", &LuaPlayerBotAI::HasTacticalMovementLock },
 
     { NULL, NULL }
 };
