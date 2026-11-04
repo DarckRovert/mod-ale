@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
   <img src="icon.png" alt="ALE Logo" width="128px">
 
 # 🔮 ALE (AzerothCore Lua Engine) — JainaCore Edition
@@ -158,3 +158,15 @@ This project is licensed under the GNU General Public License v3.0. See [LICENSE
 
 [⬆ Back to Top](#-overview)
 </div>
+
+---
+
+## 🛡️ JainaCore Sovereign Changelog
+
+| Hito | Fecha | Cambio |
+| :--- | :--- | :--- |
+| **Hito #291** | 04-Nov-2026 | `CORE_NAME` define actualizado a `"JainaCore"` en `ALEIncludes.h`. La función Lua `GetCoreName()` retorna ahora `"JainaCore"` nativamente. SHA-256 worldserver: `FB3295EF...` |
+
+**Repositorio soberano:** [DarckRovert/mod-ale](https://github.com/DarckRovert/mod-ale)  
+**Ecosistema:** Project JAIna — JainaCore 3.3.5a (WotLK, Build 12340)  
+**Fecha de actualización:** 4 de Noviembre de 2026
