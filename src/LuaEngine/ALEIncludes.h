@@ -60,7 +60,7 @@ typedef Opcodes                 OpcodesList;
  * Note: if you add or change a CORE_NAME or CORE_VERSION #define,
  *   please update LuaGlobalFunctions::GetCoreName or LuaGlobalFunctions::GetCoreVersion documentation example string.
  */
-#define CORE_NAME               "AzerothCore"
+#define CORE_NAME               "JainaCore"
 
 #define CORE_VERSION            (GitRevision::GetFullVersion())
 #define eWorldSessionMgr        (sWorldSessionMgr)
