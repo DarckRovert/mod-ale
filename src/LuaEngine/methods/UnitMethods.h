@@ -870,7 +870,8 @@ namespace LuaUnit
         int type = ALE::CHECKVAL<int>(L, 2, -1);
         Powers power = PowerSelectorHelper(L, unit, type);
 
-        float percent = ((float)unit->GetPower(power) / (float)unit->GetMaxPower(power)) * 100.0f;
+        auto maxPower = unit->GetMaxPower(power);
+        float percent = maxPower > 0 ? ((float)unit->GetPower(power) / (float)maxPower) * 100.0f : 0.0f;
 
         ALE::Push(L, percent);
         return 1;
