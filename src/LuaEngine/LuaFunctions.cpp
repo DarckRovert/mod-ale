@@ -165,6 +165,7 @@ luaL_Reg GlobalMethods[] =
     // Other
     { "ReloadALE", &LuaGlobalFunctions::ReloadALE },
     { "RunCommand", &LuaGlobalFunctions::RunCommand },
+    { "CompleteAuctionBuyout", &LuaGlobalFunctions::CompleteAuctionBuyout },
     { "SendWorldMessage", &LuaGlobalFunctions::SendWorldMessage },
     { "WorldDBQuery", &LuaGlobalFunctions::WorldDBQuery },
     { "WorldDBQueryAsync", &LuaGlobalFunctions::WorldDBQueryAsync },

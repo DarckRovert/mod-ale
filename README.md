@@ -14,6 +14,7 @@
 - **Blindaje contra Crashes de Formato (`ALETemplate.h`):** Corrección del fallo crítico de formateo nulo cuando un tipo de datos no tenía metatable registrada (`fmt::format` recibiendo puntero de cadena nulo).
 - **Hardening de `HttpManager` Asíncrono:** Soporte optimizado de peticiones HTTP no bloqueantes para la pasarela de audio WebRTC (:3050) y el Caché Semántico de Lady Jaina (:8080).
 - **Ampliación de `PlayerMethods.h` y `UnitMethods.h`:** Funciones nativas de soporte para detección y sincronización del sistema de Onboarding, BattlePass y Modos de Juego (Hardcore / Ironman).
+- **API Global de Compra Atómica en Subastas (`GlobalMethods.h` / `LuaFunctions.cpp`, Hito #341 Bug #10):** Exposición del método global `CompleteAuctionBuyout(auctionId, buyerGuidLow)` conectado directamente a `AuctionHouseMgr::CompleteBotAuctionBuyout`, liquidando oro, correos y expiración en BD de forma transaccional desde Eluna.
 
 ---
 

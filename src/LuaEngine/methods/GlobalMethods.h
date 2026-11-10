@@ -3582,5 +3582,32 @@ namespace LuaGlobalFunctions
 
         return luaL_error(L, "Invalid DBC name: %s", dbcName);
     }
+
+    /**
+     * Atomically completes a buyout on an open auction from Lua (Market Buyer Engine)
+     * without SQL deletes or unsafe auction reload memory leaks.
+     *
+     * @param uint32 auctionId
+     * @param uint32 buyerGuidLow
+     * @return bool success
+     * @return uint32 profitCopper
+     */
+    int CompleteAuctionBuyout(lua_State* L)
+    {
+        uint32 auctionId = ALE::CHECKVAL<uint32>(L, 1);
+        uint32 buyerGuidLow = ALE::CHECKVAL<uint32>(L, 2);
+        uint32 profit = 0;
+
+        if (!eAuctionMgr->CompleteBotAuctionBuyout(auctionId, buyerGuidLow, profit))
+        {
+            ALE::Push(L, false);
+            ALE::Push(L, uint32(0));
+            return 2;
+        }
+
+        ALE::Push(L, true);
+        ALE::Push(L, profit);
+        return 2;
+    }
 }
 #endif
