@@ -15,6 +15,7 @@
 - **Hardening de `HttpManager` Asíncrono:** Soporte optimizado de peticiones HTTP no bloqueantes para la pasarela de audio WebRTC (:3050) y el Caché Semántico de Lady Jaina (:8080).
 - **Ampliación de `PlayerMethods.h` y `UnitMethods.h`:** Funciones nativas de soporte para detección y sincronización del sistema de Onboarding, BattlePass y Modos de Juego (Hardcore / Ironman).
 - **API Global de Compra Atómica en Subastas (`GlobalMethods.h` / `LuaFunctions.cpp`, Hito #341 Bug #10):** Exposición del método global `CompleteAuctionBuyout(auctionId, buyerGuidLow)` conectado directamente a `AuctionHouseMgr::CompleteBotAuctionBuyout`, liquidando oro, correos y expiración en BD de forma transaccional desde Eluna.
+- **Capa de Compatibilidad Eluna Estándar — 25 Métodos Nativos C++ (`Hito #367 / v6.3.1`, commit `15c4194`):** Implementación y registro completo en `LuaFunctions.cpp` de `ObjectMethods::GetGUIDLow`; `UnitMethods` (`IsAlive`, `IsDead`, `IsInCombat`, `GetHealthPct`, `GetPowerPct`, `SetPowerPct`); `PlayerMethods` (`SendNotification`, `GetPlayerIP`); `CreatureMethods::isWorldBoss`; `GroupMethods::ChangeLeader`; y utilidades espaciales de `WorldObject` (`GetDistance`, `GetDistance2d`, `GetExactDist`, `GetExactDist2d`, `GetPlayersInRange`, `GetCreaturesInRange`, `GetGameObjectsInRange`, `GetNearObject`, `GetNearestPlayer`, `GetNearestCreature`, `GetNearestGameObject`).
 
 ---
 
