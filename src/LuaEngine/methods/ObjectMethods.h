@@ -463,5 +463,32 @@ namespace LuaObject
         ALE::Push(L, obj->ToPlayer());
         return 1;
     }
+
+    /**
+     * Returns `true` if the [Object] is a [Creature], `false` otherwise.
+     *
+     * @return bool isCreature
+     */
+    int IsCreature(lua_State* L, Object* obj)
+    {
+        ALE::Push(L, obj->GetTypeId() == TYPEID_UNIT);
+        return 1;
+    }
+
+    /**
+     * Attempts to convert the [Object] to an [Item].
+     *
+     * If the [Object] is not an [Item], returns `nil`.
+     *
+     * @return [Item] item : the [Object] as an [Item], or `nil`
+     */
+    int ToItem(lua_State* L, Object* obj)
+    {
+        if (obj->GetTypeId() == TYPEID_ITEM || obj->GetTypeId() == TYPEID_CONTAINER)
+            ALE::Push(L, static_cast<Item*>(obj));
+        else
+            ALE::Push(L, static_cast<Item*>(nullptr));
+        return 1;
+    }
 };
 #endif

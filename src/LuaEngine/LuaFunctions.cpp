@@ -230,6 +230,7 @@ ALERegister<Object> ObjectMethods[] =
     // Boolean
     { "IsInWorld", &LuaObject::IsInWorld },
     { "IsPlayer", &LuaObject::IsPlayer },
+    { "IsCreature", &LuaObject::IsCreature },
     { "HasFlag", &LuaObject::HasFlag },
 
     // Other
@@ -238,6 +239,7 @@ ALERegister<Object> ObjectMethods[] =
     { "ToCreature", &LuaObject::ToCreature },
     { "ToPlayer", &LuaObject::ToPlayer },
     { "ToCorpse", &LuaObject::ToCorpse },
+    { "ToItem", &LuaObject::ToItem },
     { "RemoveFlag", &LuaObject::RemoveFlag },
 
     { NULL, NULL }
@@ -483,6 +485,21 @@ ALERegister<Unit> UnitMethods[] =
     { "MoveClear", &LuaUnit::MoveClear },
     { "DealDamage", &LuaUnit::DealDamage },
     { "DealHeal", &LuaUnit::DealHeal },
+    { "ModifyHealth", &LuaUnit::ModifyHealth },
+    { "CombatStop", &LuaUnit::CombatStop },
+    { "IsChanneling", &LuaUnit::IsChanneling },
+    { "StopMoving", &LuaUnit::StopMoving },
+    { "IsFriendlyTo", &LuaUnit::IsFriendlyTo },
+    { "IsHostileTo", &LuaUnit::IsHostileTo },
+    { "GetCharmerOrOwnerPlayerOrPlayerItself", &LuaUnit::GetCharmerOrOwnerPlayerOrPlayerItself },
+    { "HandleEmoteCommand", &LuaUnit::HandleEmoteCommand },
+    { "SendChatMessage", &LuaUnit::SendChatMessage },
+    { "IsPet", &LuaUnit::IsPet },
+    { "IsTotem", &LuaUnit::IsTotem },
+    { "IsGuardian", &LuaUnit::IsGuardian },
+    { "IsStunned", &LuaUnit::IsStunned },
+    { "IsFeared", &LuaUnit::IsFeared },
+    { "IsConfused", &LuaUnit::IsConfused },
     { "AddThreat", &LuaUnit::AddThreat },
     { "ModifyThreatPct", &LuaUnit::ModifyThreatPct },
     { "ClearThreat", &LuaUnit::ClearThreat },
@@ -861,6 +878,14 @@ ALERegister<Player> PlayerMethods[] =
     { "ToggleInstantFlight", &LuaPlayer::ToggleInstantFlight },
     { "SetCreationTime", &LuaPlayer::SetCreationTime },
     { "ApplyRatingMod", &LuaPlayer::ApplyRatingMod },
+    { "SpawnCorpseBones", &LuaPlayer::SpawnCorpseBones },
+    { "IsResting", &LuaPlayer::IsResting },
+    { "IsInFlight", &LuaPlayer::IsInFlight },
+    { "IsOnTaxi", &LuaPlayer::IsOnTaxi },
+    { "IsGhost", &LuaPlayer::IsGhost },
+    { "IsGameMaster", &LuaPlayer::IsGameMaster },
+    { "GetSecurity", &LuaPlayer::GetSecurity },
+    { "SetSelection", &LuaPlayer::SetSelection },
 
 #ifdef MOD_PLAYERBOTS
     { "IsPlayerbot", &LuaPlayerBot::IsPlayerbot },
@@ -1229,6 +1254,7 @@ ALERegister<Creature> CreatureMethods[] =
     { "IsRegeneratingHealth", &LuaCreature::IsRegeneratingHealth },
     { "IsDungeonBoss", &LuaCreature::IsDungeonBoss },
     { "IsWorldBoss", &LuaCreature::IsWorldBoss },
+    { "isWorldBoss", &LuaCreature::IsWorldBoss },
     { "IsRacialLeader", &LuaCreature::IsRacialLeader },
     { "IsCivilian", &LuaCreature::IsCivilian },
     { "IsTrigger", &LuaCreature::IsTrigger },
@@ -1485,6 +1511,7 @@ ALERegister<Group> GroupMethods[] =
 
     // Setters
     { "SetLeader", &LuaGroup::SetLeader },
+    { "ChangeLeader", &LuaGroup::SetLeader },
     { "SetMembersGroup", &LuaGroup::SetMembersGroup },
     { "SetTargetIcon", &LuaGroup::SetTargetIcon },
     { "SetMemberFlag", &LuaGroup::SetMemberFlag },

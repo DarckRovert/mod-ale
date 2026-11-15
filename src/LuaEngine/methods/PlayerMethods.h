@@ -5201,6 +5201,55 @@ namespace LuaPlayer
         ALE::Push(L, player->GetMostPointsTalentTree());
         return 1;
     }
+
+    int SpawnCorpseBones(lua_State* /*L*/, Player* player)
+    {
+        player->SpawnCorpseBones();
+        return 0;
+    }
+
+    int IsResting(lua_State* L, Player* player)
+    {
+        ALE::Push(L, player->HasPlayerFlag(PLAYER_FLAGS_RESTING));
+        return 1;
+    }
+
+    int IsInFlight(lua_State* L, Player* player)
+    {
+        ALE::Push(L, player->IsInFlight());
+        return 1;
+    }
+
+    int IsOnTaxi(lua_State* L, Player* player)
+    {
+        ALE::Push(L, player->IsInFlight());
+        return 1;
+    }
+
+    int IsGhost(lua_State* L, Player* player)
+    {
+        ALE::Push(L, player->HasPlayerFlag(PLAYER_FLAGS_GHOST));
+        return 1;
+    }
+
+    int IsGameMaster(lua_State* L, Player* player)
+    {
+        ALE::Push(L, player->IsGameMaster());
+        return 1;
+    }
+
+    int GetSecurity(lua_State* L, Player* player)
+    {
+        ALE::Push(L, player->GetSession() ? uint32(player->GetSession()->GetSecurity()) : uint32(SEC_PLAYER));
+        return 1;
+    }
+
+    int SetSelection(lua_State* L, Player* player)
+    {
+        ObjectGuid guid = ALE::CHECKVAL<ObjectGuid>(L, 2);
+        player->SetSelection(guid);
+        return 0;
+    }
 };
 #endif
 

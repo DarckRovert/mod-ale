@@ -2797,5 +2797,111 @@ namespace LuaUnit
         ALE::Push(L, unit->GetThreatMgr().GetThreat(target));
         return 1;
     }
+
+    int IsFriendlyTo(lua_State* L, Unit* unit)
+    {
+        Unit const* target = ALE::CHECKOBJ<Unit>(L, 2, false);
+        ALE::Push(L, target ? unit->IsFriendlyTo(target) : false);
+        return 1;
+    }
+
+    int IsHostileTo(lua_State* L, Unit* unit)
+    {
+        Unit const* target = ALE::CHECKOBJ<Unit>(L, 2, false);
+        ALE::Push(L, target ? unit->IsHostileTo(target) : false);
+        return 1;
+    }
+
+    int ModifyHealth(lua_State* L, Unit* unit)
+    {
+        int32 dVal = ALE::CHECKVAL<int32>(L, 2);
+        unit->ModifyHealth(dVal);
+        return 0;
+    }
+
+    int CombatStop(lua_State* L, Unit* unit)
+    {
+        bool includingCast = ALE::CHECKVAL<bool>(L, 2, false);
+        unit->CombatStop(includingCast);
+        return 0;
+    }
+
+    int IsChanneling(lua_State* L, Unit* unit)
+    {
+        ALE::Push(L, unit->GetCurrentSpell(CURRENT_CHANNELED_SPELL) != nullptr);
+        return 1;
+    }
+
+    int StopMoving(lua_State* /*L*/, Unit* unit)
+    {
+        unit->StopMoving();
+        return 0;
+    }
+
+    int GetCharmerOrOwnerPlayerOrPlayerItself(lua_State* L, Unit* unit)
+    {
+        ALE::Push(L, unit->GetCharmerOrOwnerPlayerOrPlayerItself());
+        return 1;
+    }
+
+    int HandleEmoteCommand(lua_State* L, Unit* unit)
+    {
+        uint32 anim_id = ALE::CHECKVAL<uint32>(L, 2, 0);
+        if (anim_id > 0)
+            unit->HandleEmoteCommand(anim_id);
+        return 0;
+    }
+
+    int SendChatMessage(lua_State* L, Unit* unit)
+    {
+        uint8 type = ALE::CHECKVAL<uint8>(L, 2);
+        uint32 lang = ALE::CHECKVAL<uint32>(L, 3);
+        std::string msg = ALE::CHECKVAL<std::string>(L, 4);
+        Unit* target = ALE::CHECKOBJ<Unit>(L, 5, false);
+
+        if ((type == CHAT_MSG_WHISPER || type == 6) && target && target->ToPlayer())
+            unit->Whisper(msg, Language(lang), target->ToPlayer());
+        else if (type == CHAT_MSG_YELL || type == 2)
+            unit->Yell(msg, Language(lang));
+        else
+            unit->Say(msg, Language(lang));
+        return 0;
+    }
+
+    int IsPet(lua_State* L, Unit* unit)
+    {
+        ALE::Push(L, unit->IsPet());
+        return 1;
+    }
+
+    int IsTotem(lua_State* L, Unit* unit)
+    {
+        ALE::Push(L, unit->IsTotem());
+        return 1;
+    }
+
+    int IsGuardian(lua_State* L, Unit* unit)
+    {
+        ALE::Push(L, unit->IsGuardian());
+        return 1;
+    }
+
+    int IsStunned(lua_State* L, Unit* unit)
+    {
+        ALE::Push(L, unit->HasUnitState(UNIT_STATE_STUNNED));
+        return 1;
+    }
+
+    int IsFeared(lua_State* L, Unit* unit)
+    {
+        ALE::Push(L, unit->HasUnitState(UNIT_STATE_FLEEING));
+        return 1;
+    }
+
+    int IsConfused(lua_State* L, Unit* unit)
+    {
+        ALE::Push(L, unit->HasUnitState(UNIT_STATE_CONFUSED));
+        return 1;
+    }
 };
 #endif
