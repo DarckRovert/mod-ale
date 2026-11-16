@@ -2307,6 +2307,9 @@ namespace LuaUnit
     int CastSpell(lua_State* L, Unit* unit)
     {
         Unit* target = ALE::CHECKOBJ<Unit>(L, 2, false);
+        if (unit->IsCleanupDone() || unit->IsDuringRemoveFromWorld() || (target && (target->IsCleanupDone() || target->IsDuringRemoveFromWorld())))
+            return 0;
+
         uint32 spell = ALE::CHECKVAL<uint32>(L, 3);
         bool triggered = ALE::CHECKVAL<bool>(L, 4, false);
         SpellInfo const* spellEntry = sSpellMgr->GetSpellInfo(spell);
@@ -2333,6 +2336,9 @@ namespace LuaUnit
     int CastCustomSpell(lua_State* L, Unit* unit)
     {
         Unit* target = ALE::CHECKOBJ<Unit>(L, 2, false);
+        if (unit->IsCleanupDone() || unit->IsDuringRemoveFromWorld() || (target && (target->IsCleanupDone() || target->IsDuringRemoveFromWorld())))
+            return 0;
+
         uint32 spell = ALE::CHECKVAL<uint32>(L, 3);
         bool triggered = ALE::CHECKVAL<bool>(L, 4, false);
         bool has_bp0 = !lua_isnoneornil(L, 5);
@@ -2359,6 +2365,9 @@ namespace LuaUnit
      */
     int CastSpellAoF(lua_State* L, Unit* unit)
     {
+        if (unit->IsCleanupDone() || unit->IsDuringRemoveFromWorld())
+            return 0;
+
         float _x = ALE::CHECKVAL<float>(L, 2);
         float _y = ALE::CHECKVAL<float>(L, 3);
         float _z = ALE::CHECKVAL<float>(L, 4);
@@ -2434,9 +2443,12 @@ namespace LuaUnit
     {
         uint32 spell = ALE::CHECKVAL<uint32>(L, 2);
         Unit* target = ALE::CHECKOBJ<Unit>(L, 3);
+        if (unit->IsCleanupDone() || unit->IsDuringRemoveFromWorld() || target->IsCleanupDone() || target->IsDuringRemoveFromWorld())
+            return 0;
+
         SpellInfo const* spellEntry = sSpellMgr->GetSpellInfo(spell);
         if (!spellEntry)
-            return 1;
+            return 0;
 
         ALE::Push(L, unit->AddAura(spell, target));
         return 1;
